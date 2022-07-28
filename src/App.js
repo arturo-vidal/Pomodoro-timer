@@ -23,30 +23,42 @@ class App extends React.Component{
   }
 
   addWorkMinutes=()=>{
-    const {sessionCount}= this.state;
+    const {sessionCount, clockCount}= this.state;
     if(sessionCount < 60){
       this.setState({sessionCount: sessionCount + 1});
+      if(this.state.currentTimer==="Session"){
+        this.setState({clockCount: clockCount + 60});
+      }
     }
   }
 
   sustrWorkMinutes=()=>{
-    const {sessionCount}= this.state;
+    const {sessionCount, clockCount}= this.state;
     if(sessionCount > 1){
       this.setState({sessionCount: sessionCount -1});
+      if(this.state.currentTimer==="Session"){
+        this.setState({clockCount: clockCount - 60});
+      }
     }
   }
 
   addBreakMinutes=()=>{
-    const {breakCount}= this.state;
+    const {breakCount, clockCount}= this.state;
     if(breakCount < 60){
       this.setState({breakCount: breakCount + 1});
+      if(this.state.currentTimer==="Break"){
+        this.setState({clockCount: clockCount + 60});
+      }
     }
   }
 
   sustrBreakMinutes=()=>{
-    const {breakCount}= this.state;
+    const {breakCount, clockCount}= this.state;
     if(breakCount > 1){
       this.setState({breakCount: breakCount - 1});
+      if(this.state.currentTimer==="Break"){
+        this.setState({clockCount: clockCount - 60});
+      }
     }
   }
 
