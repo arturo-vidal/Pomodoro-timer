@@ -9,7 +9,9 @@ class App extends React.Component{
       breakCount: 5,
       sessionCount: 25,
       currentTimer: "Session",
-      clockCount: 25 * 60
+      clockCount: 25 * 60,
+      isPlaying: false,
+      loop: undefined
     }
   }
     
@@ -62,6 +64,22 @@ class App extends React.Component{
     }
   }
 
+  handlePlayPause=()=>{
+    const {isPlaying}= this.state;
+    if(isPlaying){
+      this.setState({isPlaying: false});
+    }else{
+      this.setState({isPlaying: true});
+    }
+
+    this.loop= setInterval(()=>{
+      const{clockCount, currentTimer, breakCount, sessionCount}= this.state;
+      if(clockCount=== 0){
+        this.setState({currentTimer: (currentTimer==="Session") ? "Break" : "Session",
+                        clockCount: (currentTimer==="Session") ? (breakCount * 60) : (sessionCount * 60)})
+      }
+    }, 1000);
+  }
   
   render(){
     return (
