@@ -5,6 +5,7 @@ import TimerSetting from './components/TimerSetting';
 class App extends React.Component{
   constructor(props){
     super(props);
+    this.loop=undefined;
     this.state={
       breakCount: 5,
       sessionCount: 25,
@@ -67,18 +68,39 @@ class App extends React.Component{
   handlePlayPause=()=>{
     const {isPlaying}= this.state;
     if(isPlaying){
+      clearInterval(this.loop);
       this.setState({isPlaying: false});
     }else{
       this.setState({isPlaying: true});
     }
 
     this.loop= setInterval(()=>{
-      const{clockCount, currentTimer, breakCount, sessionCount}= this.state;
+      const {clockCount, currentTimer, breakCount, sessionCount}= this.state;
       if(clockCount=== 0){
         this.setState({currentTimer: (currentTimer==="Session") ? "Break" : "Session",
-                        clockCount: (currentTimer==="Session") ? (breakCount * 60) : (sessionCount * 60)})
+          clockCount: (currentTimer==="Session") ? (breakCount * 60) : (sessionCount * 60)});
+        /*play audio*/
+      }else{
+        this.setState({clockCount: clockCount - 1});
       }
     }, 1000);
+  }
+
+  handleReset=()=>{
+    const {clockCount, currentTimer, breakCount, sessionCount, isPlaying}= this.state;
+    this.setState({
+      clockCount: 25 * 60,
+      currentTimer: "Session",
+      breakCount: 5,
+      sessionCount: 25,
+      isPlaying: false
+    });
+    clearInterval(this.loop);
+    /*stop audio & reatart audio*/
+  }
+
+  componentWillUnmount(){
+    clearInterval(this.loop);
   }
   
   render(){
@@ -92,7 +114,7 @@ class App extends React.Component{
         <h3 id="timer-label">{this.state.currentTimer}</h3>
         <h1 id="time-left">{this.toTime(this.state.clockCount)}</h1>
         <div className="buttons">
-          <button id="start-stop"></button>
+          <button id="start-stop" onClick={this.handlePlayPause}></button>
           <button id="reset"></button>
         </div>
       </div>
