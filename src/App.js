@@ -4,6 +4,8 @@ import TimerSetting from './components/TimerSetting';
 import {BsFillPlayFill, BsFillPauseFill} from 'react-icons/bs';
 import {VscDebugRestart} from 'react-icons/vsc'
 
+const audio= document.getElementById("beep");
+
 class App extends React.Component{
   constructor(props){
     super(props);
@@ -79,7 +81,7 @@ class App extends React.Component{
         if(clockCount=== 0){
           this.setState({currentTimer: (currentTimer==="Session") ? "Break" : "Session",
             clockCount: (currentTimer==="Session") ? (breakCount * 60) : (sessionCount * 60)});
-          /*play audio*/
+          audio.play();
         }else{
           this.setState({clockCount: clockCount - 1});
         }
@@ -88,13 +90,15 @@ class App extends React.Component{
   }
 
   handleReset=()=>{
-    this.setState({clockCount: 25 * 60,
-    currentTimer: "Session",
-    breakCount: 5,
-    sessionCount: 25,
-    isPlaying: false});
+    this.setState({
+      clockCount: 25 * 60,
+      currentTimer: "Session",
+      breakCount: 5,
+      sessionCount: 25,
+      isPlaying: false});
     clearInterval(this.loop);
-    /*stop audio, restart audio*/
+    audio.pause();
+    audio.currentTime=0;
   }
 
   componentWillUnmount(){
