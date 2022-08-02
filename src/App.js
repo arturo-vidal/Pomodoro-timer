@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 import TimerSetting from './components/TimerSetting';
+import {BsFillPlayFill, BsFillPauseFill} from 'react-icons/bs';
+import {VscDebugRestart} from 'react-icons/vsc'
 
 class App extends React.Component{
   constructor(props){
@@ -72,31 +74,27 @@ class App extends React.Component{
       this.setState({isPlaying: false});
     }else{
       this.setState({isPlaying: true});
+      this.loop= setInterval(()=>{
+        const {clockCount, currentTimer, breakCount, sessionCount}= this.state;
+        if(clockCount=== 0){
+          this.setState({currentTimer: (currentTimer==="Session") ? "Break" : "Session",
+            clockCount: (currentTimer==="Session") ? (breakCount * 60) : (sessionCount * 60)});
+          /*play audio*/
+        }else{
+          this.setState({clockCount: clockCount - 1});
+        }
+      }, 1000);
     }
-
-    this.loop= setInterval(()=>{
-      const {clockCount, currentTimer, breakCount, sessionCount}= this.state;
-      if(clockCount=== 0){
-        this.setState({currentTimer: (currentTimer==="Session") ? "Break" : "Session",
-          clockCount: (currentTimer==="Session") ? (breakCount * 60) : (sessionCount * 60)});
-        /*play audio*/
-      }else{
-        this.setState({clockCount: clockCount - 1});
-      }
-    }, 1000);
   }
 
   handleReset=()=>{
-    const {clockCount, currentTimer, breakCount, sessionCount, isPlaying}= this.state;
-    this.setState({
-      clockCount: 25 * 60,
-      currentTimer: "Session",
-      breakCount: 5,
-      sessionCount: 25,
-      isPlaying: false
-    });
+    this.setState({clockCount: 25 * 60,
+    currentTimer: "Session",
+    breakCount: 5,
+    sessionCount: 25,
+    isPlaying: false});
     clearInterval(this.loop);
-    /*stop audio & reatart audio*/
+    /*stop audio, restart audio*/
   }
 
   componentWillUnmount(){
@@ -114,8 +112,8 @@ class App extends React.Component{
         <h3 id="timer-label">{this.state.currentTimer}</h3>
         <h1 id="time-left">{this.toTime(this.state.clockCount)}</h1>
         <div className="buttons">
-          <button id="start-stop" onClick={this.handlePlayPause}></button>
-          <button id="reset"></button>
+          <button id="start-stop" onClick={this.handlePlayPause}><BsFillPlayFill /><BsFillPauseFill /></button>
+          <button id="reset" onClick={this.handleReset} ><VscDebugRestart /></button>
         </div>
       </div>
     </div>
