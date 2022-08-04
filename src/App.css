@@ -1,4 +1,25 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Aldrich&display=swap');
+
+body{
+  background: linear-gradient(60deg, rgba(2,0,36,1) 0%, rgba(27,125,221,1) 0%, rgba(40,228,246,1) 100%);
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.app-container{
+  background-color: rgb(57, 109, 57);
+  width: 70%;
+  margin: 50px;
+  padding: 5% 10%;
+  border: 10px solid rgb(19, 78, 19);
+  box-shadow: -4px 7px 12px -1px rgba(0,0,0,0.75);
+  -webkit-box-shadow: -4px 7px 12px -1px rgba(0,0,0,0.75);
+  -moz-box-shadow: -4px 7px 12px -1px rgba(0,0,0,0.75);
+  border-radius: 10px;
+}
 #setting-container{
   display: flex;
   justify-content: space-around;
@@ -8,4 +29,11 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  font-family: 'Aldrich', sans-serif;
+}
+#timer-label{
+  font-size: 30px;
+}
+#time-left{
+  font-size: 50px;
 }
