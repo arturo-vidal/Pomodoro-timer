@@ -14,12 +14,28 @@
   font-size: 25px;
   text-align: center;
 }
+#session-length, #break-length{
+  width: 40px;
+  text-align: center;
+}
 .moreless{
   margin: 10px;
   padding: 10px;
+  text-align: center;
+  font-size: 25px;
   width: 10%;
   border: 3px solid black;
   border-radius: 10px;
-  background-color: rgb(19, 78, 19);
+  background-color: #0B132B;
   box-shadow: -4px 7px 12px -1px rgba(0,0,0,0.75);
+  cursor: pointer;
+  color: white;
+}
+.moreless:hover{
+  background-color: #068ec4;
+  font-size: 27px;
+}
+.moreless:active{
+  box-shadow: -2px 3px 7px -1px rgba(0,0,0,0.75);
+  color: black;
 }

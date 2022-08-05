@@ -10,11 +10,11 @@ body{
   align-items: center;
 }
 .app-container{
-  background-color: rgb(57, 109, 57);
+  background-color: #3A506B;
   width: 70%;
   margin: 50px;
   padding: 5% 10%;
-  border: 10px solid rgb(19, 78, 19);
+  border: 10px solid #0B132B;
   box-shadow: -4px 7px 12px -1px rgba(0,0,0,0.75);
   -webkit-box-shadow: -4px 7px 12px -1px rgba(0,0,0,0.75);
   -moz-box-shadow: -4px 7px 12px -1px rgba(0,0,0,0.75);
@@ -36,4 +36,30 @@ body{
 }
 #time-left{
   font-size: 50px;
+}
+.buttons{
+  display: flex;
+}
+button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  background-color: #0B132B;
+  color: white;
+  width: 70px;
+  height: 30px;
+  margin: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: -4px 7px 12px -1px rgba(0,0,0,0.75);
+  font-size: 20px;
+}
+button:hover{
+  background-color: #068ec4;
+  font-size: 22px;
+}
+button:active{
+  box-shadow: -2px 3px 7px -1px rgba(0,0,0,0.75);
+  color: black;
 }

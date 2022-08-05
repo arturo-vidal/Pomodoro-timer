@@ -107,21 +107,21 @@ class App extends React.Component{
   
   render(){
     return (
-    <div className="app-container">
-      <div id="setting-container">
-        <TimerSetting title="Work minutes" preset={this.state.sessionCount} addMin={this.addWorkMinutes} sustrMin={this.sustrWorkMinutes} />
-        <TimerSetting title="Break minutes" preset={this.state.breakCount} addMin={this.addBreakMinutes} sustrMin={this.sustrBreakMinutes} />
-      </div>
-      <div id="timer-container">
-        <h3 id="timer-label">{this.state.currentTimer}</h3>
-        <h1 id="time-left">{this.toTime(this.state.clockCount)}</h1>
-        <div className="buttons">
-          <button id="start-stop" onClick={this.handlePlayPause}><BsFillPlayFill /><BsFillPauseFill /></button>
-          <button id="reset" onClick={this.handleReset} ><VscDebugRestart /></button>
+      <div className="app-container">
+        <div id="setting-container">
+          <TimerSetting title="Work minutes" preset={this.state.sessionCount} addMin={this.addWorkMinutes} sustrMin={this.sustrWorkMinutes} />
+          <TimerSetting title="Break minutes" preset={this.state.breakCount} addMin={this.addBreakMinutes} sustrMin={this.sustrBreakMinutes} />
+        </div>
+        <div id="timer-container">
+          <h3 id="timer-label">{this.state.currentTimer}</h3>
+          <h1 id="time-left">{this.toTime(this.state.clockCount)}</h1>
+          <div className="buttons">
+            <button id="start-stop" onClick={this.handlePlayPause}><BsFillPlayFill /><BsFillPauseFill /></button>
+            <button id="reset" onClick={this.handleReset} ><VscDebugRestart /></button>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
   }
 }
 
