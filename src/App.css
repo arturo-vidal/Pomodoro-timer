@@ -3,11 +3,17 @@
 
 body{
   background: linear-gradient(60deg, rgba(2,0,36,1) 0%, rgba(27,125,221,1) 0%, rgba(40,228,246,1) 100%);
-  min-height: 100vh;
-  min-width: 100vw;
+  min-height: 100%;
+  min-width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+#page{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .app-container{
   background-color: #3A506B;
@@ -61,5 +67,28 @@ button:hover{
 }
 button:active{
   box-shadow: -2px 3px 7px -1px rgba(0,0,0,0.75);
+  color: black;
+}
+footer{
+  margin: 40px;
+  text-align: center;
+  padding: 40px;
+  width: 100%;
+  font-family: 'Aldrich', sans-serif;
+  font-size: 20px;
+}
+hr{
+  margin: 50px;
+}
+#contacts{
+  margin: 40px;
+}
+a{
+  margin: 50px;
+  font-size: 30px;
+  cursor: pointer;
+  text-decoration: none;
+}
+a:hover{
   color: black;
 }

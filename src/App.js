@@ -1,8 +1,9 @@
 import React from 'react';
 import './App.css';
 import TimerSetting from './components/TimerSetting';
-import {BsFillPlayFill, BsFillPauseFill} from 'react-icons/bs';
-import {VscDebugRestart} from 'react-icons/vsc'
+import {BsFillPlayFill, BsFillPauseFill, BsLinkedin, BsGithub} from 'react-icons/bs';
+import {VscDebugRestart} from 'react-icons/vsc';
+import {SiCodepen} from 'react-icons/si';
 
 const audio= document.getElementById("beep");
 
@@ -107,6 +108,7 @@ class App extends React.Component{
   
   render(){
     return (
+      <div id="page">
       <div className="app-container">
         <div id="setting-container">
           <TimerSetting title="Work minutes" preset={this.state.sessionCount} addMin={this.addWorkMinutes} sustrMin={this.sustrWorkMinutes} />
@@ -120,6 +122,17 @@ class App extends React.Component{
             <button id="reset" onClick={this.handleReset} ><VscDebugRestart /></button>
           </div>
         </div>
+      </div>
+        <footer>
+          <hr/>
+          <p>Code by Arturo Vidal</p>
+          <p>Contact:</p>
+          <div id="contacts">
+             <a className="contact-link" target="_blank" href="https://codepen.io/arturo_vidal"><SiCodepen /> Code Pen</a>
+             <a className="contact-link" target="_blank" href="https://www.linkedin.com/in/garturovidal/"><BsLinkedin /> Linkedin</a>
+             <a className="contact-link" target="_blank" href="https://github.com/arturo-vidal"><BsGithub /> Github</a>
+          </div>
+        </footer>
       </div>
     );
   }
